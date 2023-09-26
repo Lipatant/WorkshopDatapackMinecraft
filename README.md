@@ -173,3 +173,53 @@ We'll place all these commands inside `datapacks/WorkshopDatapacks/data/workshop
 ### **Tick**
 
 The `workshop:tick` function is executed 20 times per second. This is fast but also practical.
+
+Add one of the functions from `load.mcfunction` into `tick.mcfunction` so every tick, the value of `ticksSinceGround` of every player gets incremented by 1.
+
+Once it's done, we can add a condition by changing our current target. For that, we'll use the `nbt` argument. ([Target selector arguments](https://minecraft.wiki/w/Target_selectors#Target_selector_arguments))
+
+But, what's a nbt? Let's go a little test, try typing `/data get entity @s`. This command displays every bit data concerning the entity `@s`, meaning ourselves.
+
+![I Believe I Can Fly Data](docs/IBelieveICanFlyData.png)
+
+In Minecraft, every entity carries a portion of data called 'nbt'. By using `/data`, we found something useful, our player carries a value called `OnGround`. It can be equal to either `0b` (false) or `1b` (true).
+
+Now, you can make that your `tick` function only increments the value of `ticksSinceGround` for players having their feet **off** the ground.
+
+Once done, you can add, again, a new command in `tick` setting the scoreboard back to **0** for players that are **on** the ground.
+
+### **Execute and effect**
+
+The following part aims towards the creation of one `execute` command.
+
+The `execute` command is the most complex command in Minecraft. It allows us to use other commands with modifiers.
+
+Let's first write a `execute` command modified with the `as` modifier followed by a selector applying the function to every player. We can now consider that the command as been 'divided' between all the selected players.
+
+(`/help execute` and [Commands/execute](https://minecraft.wiki/w/Commands/execute))
+
+Then, for every single one of these player (using `@s`), add a `if` condition checking if the value of `ticksSinceGround` is strictly equal to 10 (0.5 second).
+
+After than, you can give the `levitation` effects to the player. The effect will last 1 second.
+
+(`/help effect`, [Commands/effect](https://minecraft.wiki/w/Commands/effect) and [Effect](https://minecraft.wiki/w/Effect))
+
+You can't fly yet, but at least you can float.
+
+### **SelectedItem**
+
+For this part, we'll have to choose a light item, like a feather for example.
+
+Remember `/data`? Let's be more specific this time. Try typing `/data get entity @s SelectedItem` while holding a feather.
+
+![I Believe I Can Fly Data SelectedItem](docs/IBelieveICanFlyDataSelectedItem.png)
+
+As we expected, it displayed our currently held item, from the **SelectedItem** `nbt`.
+
+Now we can add change our `as @a` selector to include only players holding our item.
+
+Once it's done, we should be able to float if and only if we're holding a feather.
+
+Now, let's fly! Change our previous condition so it's checking for if the value of `ticksSinceGround` is **superior or equal** to 10.
+
+![I Believe I Can Fly Feather](docs/IBelieveICanFlyFeather.png)
