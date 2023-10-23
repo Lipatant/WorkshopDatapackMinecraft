@@ -223,3 +223,13 @@ Once it's done, we should be able to float if and only if we're holding a feathe
 Now, let's fly! Change our previous condition so it's checking for if the value of `ticksSinceGround` is **superior or equal** to 10.
 
 ![I Believe I Can Fly Feather](docs/IBelieveICanFlyFeather.png)
+
+## Bonus - Never Gonna Stop
+
+There it is, you've finished the workshop, or have you?
+
+As a bonus, I'll ask you to find a solution for implementing a custom feather, so not just any feather can make you fly.
+
+Then, make it craftable, with a custom craft. For that, you'll need to craft an unobtainable item, then replace it.
+
+If you're still here, you can put the final touches to your datapack by adding a custom advancement for your feather.
