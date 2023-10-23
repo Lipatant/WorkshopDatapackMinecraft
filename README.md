@@ -4,7 +4,7 @@
 
 We'll assume you already own Minecraft for Java (legally). You can do this Workshop on both Windows, Mac and Linux.
 
-Launch Minecraft in the **lastest version**. This is important since the Datapack formating is reguarly update.
+Launch Minecraft in the **lastest version** (1.20.2). This is important since the Datapack formating is reguarly update.
 
 ![Last Version](docs/Version.png)
 
